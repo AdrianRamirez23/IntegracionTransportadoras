@@ -7,6 +7,7 @@ namespace WebServicesSaferbo.SOAP.Models
 {
     public class RemitenteDestinario
     {
+        public string TipoTransportadora { get; set; }
         public string dscodigocliente { get; set; }
         public string dsnitr { get; set; }
         public string dsnombrer { get; set; }

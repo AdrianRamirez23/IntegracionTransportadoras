@@ -1,0 +1,1440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="JRpcServerSoapManager" targetNamespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php">
+      <xsd:complexType name="ArrayOfAgw_typeGuiaDetalle">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeGuiaDetalle[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGuiaDetalle">
+        <xsd:all>
+          <xsd:element name="ubl" type="xsd:int" />
+          <xsd:element name="alto" type="xsd:float" />
+          <xsd:element name="ancho" type="xsd:float" />
+          <xsd:element name="largo" type="xsd:float" />
+          <xsd:element name="peso" type="xsd:float" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="nombre_empaque" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeGuiaDetalleRecaudo">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeGuiaDetalleRecaudo[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGuiaDetalleRecaudo">
+        <xsd:all>
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="valor" type="xsd:float" />
+          <xsd:element name="valor_base_iva" type="xsd:float" />
+          <xsd:element name="valor_iva" type="xsd:float" />
+          <xsd:element name="forma_pago" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeNotificaciones">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeNotificaciones[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeNotificaciones">
+        <xsd:all>
+          <xsd:element name="tipo_medio" type="xsd:string" />
+          <xsd:element name="destino_notificacion" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeAtributosRetorno">
+        <xsd:all>
+          <xsd:element name="nit" type="xsd:string" />
+          <xsd:element name="div" type="xsd:string" />
+          <xsd:element name="nombre" type="xsd:string" />
+          <xsd:element name="direccion" type="xsd:string" />
+          <xsd:element name="codigo_ciudad" type="xsd:string" />
+          <xsd:element name="telefono" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarGuiaIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="fecha" type="xsd:string" />
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="id_remitente" type="xsd:int" />
+          <xsd:element name="nit_remitente" type="xsd:string" />
+          <xsd:element name="nombre_remitente" type="xsd:string" />
+          <xsd:element name="direccion_remitente" type="xsd:string" />
+          <xsd:element name="telefono_remitente" type="xsd:string" />
+          <xsd:element name="ciudad_remitente" type="xsd:string" />
+          <xsd:element name="nit_destinatario" type="xsd:string" />
+          <xsd:element name="div_destinatario" type="xsd:string" />
+          <xsd:element name="nombre_destinatario" type="xsd:string" />
+          <xsd:element name="direccion_destinatario" type="xsd:string" />
+          <xsd:element name="ciudad_destinatario" type="xsd:string" />
+          <xsd:element name="telefono_destinatario" type="xsd:string" />
+          <xsd:element name="valor_declarado" type="xsd:float" />
+          <xsd:element name="codigo_cuenta" type="xsd:int" />
+          <xsd:element name="codigo_producto" type="xsd:int" />
+          <xsd:element name="nivel_servicio" type="xsd:int" />
+          <xsd:element name="linea" type="xsd:string" />
+          <xsd:element name="contenido" type="xsd:string" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="observaciones" type="xsd:string" />
+          <xsd:element name="estado" type="xsd:string" />
+          <xsd:element name="detalle" type="tns:ArrayOfAgw_typeGuiaDetalle" />
+          <xsd:element name="cuenta_contable" type="xsd:string" />
+          <xsd:element name="centro_costos" type="xsd:string" />
+          <xsd:element name="recaudos" type="tns:ArrayOfAgw_typeGuiaDetalleRecaudo" />
+          <xsd:element name="margen_izquierdo" type="xsd:float" />
+          <xsd:element name="margen_superior" type="xsd:float" />
+          <xsd:element name="usuario_vmi" type="xsd:string" />
+          <xsd:element name="formato_impresion" type="xsd:string" />
+          <xsd:element name="atributo1_nombre" type="xsd:string" />
+          <xsd:element name="atributo1_valor" type="xsd:string" />
+          <xsd:element name="notificaciones" type="tns:ArrayOfAgw_typeNotificaciones" />
+          <xsd:element name="atributos_retorno" type="tns:Agw_typeAtributosRetorno" />
+          <xsd:element name="nro_doc_radicados" type="xsd:string" />
+          <xsd:element name="nro_sobre" type="xsd:string" />
+          <xsd:element name="codigo_vendedor" type="xsd:int" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarGuiaOut">
+        <xsd:all>
+          <xsd:element name="id_remision" type="xsd:int" />
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="pdf_guia" type="xsd:string" />
+          <xsd:element name="url_terceros" type="xsd:string" />
+          <xsd:element name="referencia" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeAnularGuiaIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_liquidacionGuiaIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_liquidacionGuiaOut">
+        <xsd:all>
+          <xsd:element name="flete_fijo" type="xsd:float" />
+          <xsd:element name="flete_variable" type="xsd:float" />
+          <xsd:element name="flete_total" type="xsd:float" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarDespachoIn">
+        <xsd:all>
+          <xsd:element name="guias" type="soap-enc:Array" />
+          <xsd:element name="margen_izquierdo" type="xsd:float" />
+          <xsd:element name="margen_superior" type="xsd:float" />
+          <xsd:element name="tipo_impresion" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeGenerarDespachoOut">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeGenerarDespachoOut[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarDespachoOut">
+        <xsd:all>
+          <xsd:element name="url" type="xsd:string" />
+          <xsd:element name="impresion" type="xsd:string" />
+          <xsd:element name="codigo_despacho" type="xsd:int" />
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="nit_cliente" type="xsd:string" />
+          <xsd:element name="div_cliente" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarDespachoLevantePrevioIn">
+        <xsd:all>
+          <xsd:element name="ids_clientes" type="soap-enc:Array" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeGenerarDespachoBasicoOut">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeGenerarDespachoBasicoOut[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarDespachoBasicoOut">
+        <xsd:all>
+          <xsd:element name="codigo_despacho" type="xsd:int" />
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="nit_cliente" type="xsd:string" />
+          <xsd:element name="div_cliente" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeReimprimirGuiaIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="margen_izquierdo" type="xsd:float" />
+          <xsd:element name="margen_superior" type="xsd:float" />
+          <xsd:element name="formato_impresion" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeReimprimirGuiaOut">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="pdf" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeReimprimirDespachoIn">
+        <xsd:all>
+          <xsd:element name="codigo_despacho" type="xsd:string" />
+          <xsd:element name="margen_izquierdo" type="xsd:float" />
+          <xsd:element name="margen_superior" type="xsd:float" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeReimprimirDespachoOut">
+        <xsd:all>
+          <xsd:element name="codigo_despacho" type="xsd:string" />
+          <xsd:element name="pdf" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeReimprimirDespachoPlanoIn">
+        <xsd:all>
+          <xsd:element name="codigo_despacho" type="xsd:int" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeReimprimirDespachoPlanoOut">
+        <xsd:all>
+          <xsd:element name="codigo_despacho" type="xsd:int" />
+          <xsd:element name="tiquete" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeconsultarDespachosIn">
+        <xsd:all>
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="fecha_inicial" type="xsd:string" />
+          <xsd:element name="fecha_final" type="xsd:string" />
+          <xsd:element name="usuario_despacha" type="xsd:string" />
+          <xsd:element name="codigo_despacho" type="xsd:string" />
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeDespacho">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeDespacho[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeDespacho">
+        <xsd:all>
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="codigo_despacho" type="xsd:int" />
+          <xsd:element name="fecha" type="xsd:string" />
+          <xsd:element name="remisiones" type="xsd:int" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="usuario" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeconsultarDespachosOut">
+        <xsd:all>
+          <xsd:element name="despachos" type="tns:ArrayOfAgw_typeDespacho" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeConsultarRetornoRDFDIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="apikey" type="xsd:string" />
+          <xsd:element name="password" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeConsultarRetornoRDFDOut">
+        <xsd:all>
+          <xsd:element name="remision_retorno" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeActualizarPesoVolumenRetornoRDFDIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="nro_doc_radicados" type="xsd:string" />
+          <xsd:element name="apikey" type="xsd:string" />
+          <xsd:element name="password" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeActualizarPesoVolumenRetornoRDFDOut">
+        <xsd:all>
+          <xsd:element name="id_con" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarDespachoRDFDIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="id_con" type="xsd:int" />
+          <xsd:element name="atributo_opcional" type="xsd:boolean" />
+          <xsd:element name="apikey" type="xsd:string" />
+          <xsd:element name="password" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Type_void">
+        <xsd:all />
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeRastreoSimpleIn">
+        <xsd:all>
+          <xsd:element name="codigos_remision" type="soap-enc:Array" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeRastreoSimpleOut">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeRastreoSimpleOut[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeRastreoSimpleOutVinculadas">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeRastreoSimpleOutVinculadas[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeRastreoSimpleOutVinculadas">
+        <xsd:all>
+          <xsd:element name="guia" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeRastreoSimpleOut">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="codigo_estado" type="xsd:int" />
+          <xsd:element name="descripcion_estado" type="xsd:string" />
+          <xsd:element name="fecha_entrega" type="xsd:string" />
+          <xsd:element name="hora_entrega" type="xsd:string" />
+          <xsd:element name="guia_vinculadas" type="tns:ArrayOfAgw_typeRastreoSimpleOutVinculadas" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeRastreoExtendidoIn">
+        <xsd:all>
+          <xsd:element name="codigos_remision" type="soap-enc:Array" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeRastreoExtendidoOut">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeRastreoExtendidoOut[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeRastreoExtendidoEstados">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeRastreoExtendidoEstados[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeRastreoExtendidoEstados">
+        <xsd:all>
+          <xsd:element name="codigo_estado" type="xsd:int" />
+          <xsd:element name="descripcion" type="xsd:string" />
+          <xsd:element name="fecha" type="xsd:string" />
+          <xsd:element name="hora" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeRastreoExtendidoNovedades">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeRastreoExtendidoNovedades[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeRastreoExtendidoNovedades">
+        <xsd:all>
+          <xsd:element name="codigo_novedad" type="xsd:int" />
+          <xsd:element name="descripcion" type="xsd:string" />
+          <xsd:element name="fecha" type="xsd:string" />
+          <xsd:element name="hora" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_typeGuiasVinculadas">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_typeGuiasVinculadas[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGuiasVinculadas">
+        <xsd:all>
+          <xsd:element name="guias" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeRastreoExtendidoOut">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="codigo_estado" type="xsd:int" />
+          <xsd:element name="descripcion_estado" type="xsd:string" />
+          <xsd:element name="fecha_recogida" type="xsd:string" />
+          <xsd:element name="fecha_entrega" type="xsd:string" />
+          <xsd:element name="hora_entrega" type="xsd:string" />
+          <xsd:element name="nombre_origen" type="xsd:string" />
+          <xsd:element name="nombre_destino" type="xsd:string" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="detalle_estados" type="tns:ArrayOfAgw_typeRastreoExtendidoEstados" />
+          <xsd:element name="detalle_novedades" type="tns:ArrayOfAgw_typeRastreoExtendidoNovedades" />
+          <xsd:element name="guias_vinculadas" type="tns:ArrayOfAgw_typeGuiasVinculadas" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_detalleDespachoIn">
+        <xsd:all>
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="fecha_despacho" type="xsd:string" />
+          <xsd:element name="codigo_despacho" type="xsd:int" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_detalleDespachoGuias">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_detalleDespachoGuias[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_detalleDespachoGuias">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="unidades" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_detalleDespachoOut">
+        <xsd:all>
+          <xsd:element name="codigo_despacho" type="xsd:int" />
+          <xsd:element name="detalle" type="tns:ArrayOfAgw_detalleDespachoGuias" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_estadoRecaudoIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_estadoRecaudoOut">
+        <xsd:all>
+          <xsd:element name="estado" type="xsd:string" />
+          <xsd:element name="fecha" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_ciudadesIn">
+        <xsd:all>
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_ciudadesOut">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_ciudadesOut[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_ciudadesOut">
+        <xsd:all>
+          <xsd:element name="codigo" type="xsd:string" />
+          <xsd:element name="nombre" type="xsd:string" />
+          <xsd:element name="codigo_departamento" type="xsd:string" />
+          <xsd:element name="nombre_departamento" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_generarDespachoMovilIn">
+        <xsd:all>
+          <xsd:element name="accion" type="xsd:string" />
+          <xsd:element name="equipo" type="xsd:string" />
+          <xsd:element name="movil" type="xsd:string" />
+          <xsd:element name="recibidor" type="xsd:string" />
+          <xsd:element name="guias" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAgw_generarDespachoMovilOut">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Agw_generarDespachoMovilOut[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_generarDespachoMovilOut">
+        <xsd:all>
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="codigo_despacho" type="xsd:int" />
+          <xsd:element name="message" type="xsd:string" />
+          <xsd:element name="tiquete" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_imprimirRotulosIn">
+        <xsd:all>
+          <xsd:element name="id_rotulo" type="xsd:string" />
+          <xsd:element name="codigos_remisiones" type="soap-enc:Array" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_imprimirRotulosOut">
+        <xsd:all>
+          <xsd:element name="error" type="xsd:boolean" />
+          <xsd:element name="errorMessage" type="xsd:string" />
+          <xsd:element name="rotulos" type="xsd:string" />
+          <xsd:element name="rotulosRd" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeReimprimirGuiasIn">
+        <xsd:all>
+          <xsd:element name="id_remisiones" type="xsd:string" />
+          <xsd:element name="margen_izquierdo" type="xsd:float" />
+          <xsd:element name="margen_superior" type="xsd:float" />
+          <xsd:element name="formato_impresion" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeReimprimirGuiasOut">
+        <xsd:all>
+          <xsd:element name="pdf" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarGuiaInterIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="fecha" type="xsd:string" />
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="id_remitente" type="xsd:int" />
+          <xsd:element name="nombre_remitente" type="xsd:string" />
+          <xsd:element name="direccion_remitente" type="xsd:string" />
+          <xsd:element name="telefono_remitente" type="xsd:string" />
+          <xsd:element name="ciudad_remitente" type="xsd:string" />
+          <xsd:element name="nit_destinatario" type="xsd:string" />
+          <xsd:element name="div_destinatario" type="xsd:string" />
+          <xsd:element name="nombre_destinatario" type="xsd:string" />
+          <xsd:element name="direccion_destinatario" type="xsd:string" />
+          <xsd:element name="codigo_ciudad_destinatario_inter" type="xsd:string" />
+          <xsd:element name="nombre_ciudad_destinatario_inter" type="xsd:string" />
+          <xsd:element name="pais_destinatario_inter" type="xsd:string" />
+          <xsd:element name="codigo_postal_destinatario_inter" type="xsd:string" />
+          <xsd:element name="impuestos_origen_inter" type="xsd:string" />
+          <xsd:element name="telefono_destinatario" type="xsd:string" />
+          <xsd:element name="valor_declarado" type="xsd:float" />
+          <xsd:element name="codigo_cuenta" type="xsd:int" />
+          <xsd:element name="codigo_producto" type="xsd:int" />
+          <xsd:element name="nivel_servicio" type="xsd:int" />
+          <xsd:element name="contenido" type="xsd:string" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="observaciones" type="xsd:string" />
+          <xsd:element name="estado" type="xsd:string" />
+          <xsd:element name="detalle" type="tns:ArrayOfAgw_typeGuiaDetalle" />
+          <xsd:element name="cuenta_contable" type="xsd:string" />
+          <xsd:element name="centro_costos" type="xsd:string" />
+          <xsd:element name="id_rotulo" type="xsd:int" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeGenerarGuiaInterOut">
+        <xsd:all>
+          <xsd:element name="id_remision" type="xsd:int" />
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="pdf_rotulo" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeEditarGuiaIn">
+        <xsd:all>
+          <xsd:element name="id_remision" type="xsd:int" />
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="id_remitente" type="xsd:int" />
+          <xsd:element name="nombre_remitente" type="xsd:string" />
+          <xsd:element name="direccion_remitente" type="xsd:string" />
+          <xsd:element name="telefono_remitente" type="xsd:string" />
+          <xsd:element name="ciudad_remitente" type="xsd:string" />
+          <xsd:element name="nit_destinatario" type="xsd:string" />
+          <xsd:element name="div_destinatario" type="xsd:string" />
+          <xsd:element name="nombre_destinatario" type="xsd:string" />
+          <xsd:element name="direccion_destinatario" type="xsd:string" />
+          <xsd:element name="ciudad_destinatario" type="xsd:string" />
+          <xsd:element name="telefono_destinatario" type="xsd:string" />
+          <xsd:element name="valor_declarado" type="xsd:float" />
+          <xsd:element name="codigo_cuenta" type="xsd:int" />
+          <xsd:element name="codigo_producto" type="xsd:int" />
+          <xsd:element name="contenido" type="xsd:string" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="observaciones" type="xsd:string" />
+          <xsd:element name="detalle" type="tns:ArrayOfAgw_typeGuiaDetalle" />
+          <xsd:element name="cuenta_contable" type="xsd:string" />
+          <xsd:element name="centro_costos" type="xsd:string" />
+          <xsd:element name="margen_izquierdo" type="xsd:float" />
+          <xsd:element name="margen_superior" type="xsd:float" />
+          <xsd:element name="id_rotulo" type="xsd:int" />
+          <xsd:element name="formato_impresion" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeEditarGuiaOut">
+        <xsd:all>
+          <xsd:element name="id_remision" type="xsd:int" />
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="pdf_guia" type="xsd:string" />
+          <xsd:element name="pdf_rotulo" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_rotuloPrevioIn">
+        <xsd:all>
+          <xsd:element name="codigo_remision" type="xsd:string" />
+          <xsd:element name="cuenta" type="xsd:int" />
+          <xsd:element name="producto" type="xsd:int" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="peso_volumen" type="xsd:float" />
+          <xsd:element name="nivel_servicio" type="xsd:int" />
+          <xsd:element name="direccion_destinatario" type="xsd:string" />
+          <xsd:element name="ciudad_destino" type="xsd:string" />
+          <xsd:element name="telefono_destinatario" type="xsd:string" />
+          <xsd:element name="nombre_destinatario" type="xsd:string" />
+          <xsd:element name="direccion_remitente" type="xsd:string" />
+          <xsd:element name="ciudad_origen" type="xsd:string" />
+          <xsd:element name="telefono_remitente" type="xsd:string" />
+          <xsd:element name="nombre_remitente" type="xsd:string" />
+          <xsd:element name="numero_unidad" type="xsd:int" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="observaciones" type="xsd:string" />
+          <xsd:element name="tipo_respuesta" type="xsd:string" />
+          <xsd:element name="id_rotulo" type="xsd:int" />
+          <xsd:element name="id_cliente" type="xsd:int" />
+          <xsd:element name="referencia_detalle" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_rotuloPrevioOut">
+        <xsd:all>
+          <xsd:element name="etiqueta1d" type="xsd:string" />
+          <xsd:element name="etiqueta2d" type="xsd:string" />
+          <xsd:element name="nombre_nivel_servicio" type="xsd:string" />
+          <xsd:element name="abreviado_cuenta" type="xsd:string" />
+          <xsd:element name="abreviado_producto" type="xsd:string" />
+          <xsd:element name="codigo_terminal_origen" type="xsd:string" />
+          <xsd:element name="abreviado_terminal_origen" type="xsd:string" />
+          <xsd:element name="codigo_terminal_destino" type="xsd:string" />
+          <xsd:element name="abreviado_terminal_destino" type="xsd:string" />
+          <xsd:element name="zona_reparto" type="xsd:string" />
+          <xsd:element name="subzona_reparto" type="xsd:string" />
+          <xsd:element name="referencia_detalle" type="xsd:string" />
+          <xsd:element name="error" type="xsd:string" />
+          <xsd:element name="pdf" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeNovedadReetiquetadoIn">
+        <xsd:all>
+          <xsd:element name="unidad_entrada" type="xsd:string" />
+          <xsd:element name="unidad_salida" type="xsd:string" />
+          <xsd:element name="usuario" type="xsd:string" />
+          <xsd:element name="clave" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeNovedadReetiquetadoOut">
+        <xsd:all>
+          <xsd:element name="error" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeSugerirSifaIn">
+        <xsd:all>
+          <xsd:element name="detalle" type="tns:ArrayOfAgw_typeGuiaDetalle" />
+          <xsd:element name="nivel_servicio" type="xsd:int" />
+          <xsd:element name="recaudos" type="tns:ArrayOfAgw_typeGuiaDetalleRecaudo" />
+          <xsd:element name="cnit" type="xsd:string" />
+          <xsd:element name="cdiv" type="xsd:string" />
+          <xsd:element name="rcodigo_cm_ciudad" type="xsd:string" />
+          <xsd:element name="dcodigo_cm_ciudad" type="xsd:string" />
+          <xsd:element name="codigo_cuenta" type="xsd:int" />
+          <xsd:element name="valor_declarado" type="xsd:float" />
+          <xsd:element name="liquidacion_enguia" type="xsd:string" />
+          <xsd:element name="liquidacion_endespacho" type="xsd:string" />
+          <xsd:element name="codigo_producto" type="xsd:int" />
+          <xsd:element name="token" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Sifa_typeProductoGuia">
+        <xsd:all>
+          <xsd:element name="codigoUbl" type="xsd:int" />
+          <xsd:element name="nombreUbl" type="xsd:string" />
+          <xsd:element name="abreviadoUbl" type="xsd:string" />
+          <xsd:element name="producto" type="xsd:int" />
+          <xsd:element name="nombreProducto" type="xsd:string" />
+          <xsd:element name="abreviadoProducto" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSifa_typeSugerencia">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Sifa_typeSugerencia[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Sifa_typeSugerencia">
+        <xsd:all>
+          <xsd:element name="pesoReal" type="xsd:float" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="largo" type="xsd:float" />
+          <xsd:element name="ancho" type="xsd:float" />
+          <xsd:element name="alto" type="xsd:float" />
+          <xsd:element name="referencia" type="xsd:string" />
+          <xsd:element name="ubl" type="xsd:int" />
+          <xsd:element name="pesoRealTotal" type="xsd:float" />
+          <xsd:element name="pesoVolumenRedondeado" type="xsd:float" />
+          <xsd:element name="pesoVolumenTotal" type="xsd:float" />
+          <xsd:element name="pesoVolumen" type="xsd:float" />
+          <xsd:element name="nombreUbl" type="xsd:string" />
+          <xsd:element name="abreviadoUbl" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeSugerirSifaOut">
+        <xsd:all>
+          <xsd:element name="validado" type="xsd:boolean" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="volumen" type="xsd:float" />
+          <xsd:element name="pesoReal" type="xsd:float" />
+          <xsd:element name="productoGuia" type="tns:Sifa_typeProductoGuia" />
+          <xsd:element name="sugerencias" type="tns:ArrayOfSifa_typeSugerencia" />
+          <xsd:element name="codigoCuenta" type="xsd:int" />
+          <xsd:element name="nombreCuenta" type="xsd:string" />
+          <xsd:element name="abreviadoCuenta" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeliquidarSifaIn">
+        <xsd:all>
+          <xsd:element name="detalle" type="tns:ArrayOfAgw_typeGuiaDetalle" />
+          <xsd:element name="nivel_servicio" type="xsd:int" />
+          <xsd:element name="recaudos" type="tns:ArrayOfAgw_typeGuiaDetalleRecaudo" />
+          <xsd:element name="cnit" type="xsd:string" />
+          <xsd:element name="cdiv" type="xsd:string" />
+          <xsd:element name="rcodigo_cm_ciudad" type="xsd:string" />
+          <xsd:element name="dcodigo_cm_ciudad" type="xsd:string" />
+          <xsd:element name="codigo_cuenta" type="xsd:int" />
+          <xsd:element name="valor_declarado" type="xsd:float" />
+          <xsd:element name="liquidacion_enguia" type="xsd:string" />
+          <xsd:element name="liquidacion_endespacho" type="xsd:string" />
+          <xsd:element name="codigo_producto" type="xsd:int" />
+          <xsd:element name="token" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSifa_typeDetalle">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Sifa_typeDetalle[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Sifa_typeDetalle">
+        <xsd:all>
+          <xsd:element name="largo" type="xsd:float" />
+          <xsd:element name="ancho" type="xsd:float" />
+          <xsd:element name="alto" type="xsd:float" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="pesoReal" type="xsd:float" />
+          <xsd:element name="pesoRealTotal" type="xsd:float" />
+          <xsd:element name="pesoVolumen" type="xsd:float" />
+          <xsd:element name="pesoVolumenTotal" type="xsd:float" />
+          <xsd:element name="pesoLiquidado" type="xsd:float" />
+          <xsd:element name="fleteFijo" type="xsd:float" />
+          <xsd:element name="cotizadoTarifaPlena" type="xsd:boolean" />
+          <xsd:element name="ubl" type="xsd:int" />
+          <xsd:element name="nombreUbl" type="xsd:string" />
+          <xsd:element name="abreviadoUbl" type="xsd:string" />
+          <xsd:element name="referencia" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Sifa_typeCotizacion">
+        <xsd:all>
+          <xsd:element name="pesoLiquidado" type="xsd:float" />
+          <xsd:element name="fleteFijo" type="xsd:float" />
+          <xsd:element name="fleteVariable" type="xsd:float" />
+          <xsd:element name="fleteTotal" type="xsd:float" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="volumen" type="xsd:float" />
+          <xsd:element name="pesoReal" type="xsd:float" />
+          <xsd:element name="cotizadoTarifaPlena" type="xsd:boolean" />
+          <xsd:element name="detalles" type="tns:ArrayOfSifa_typeDetalle" />
+          <xsd:element name="nivelesServicios" type="soap-enc:Array" />
+          <xsd:element name="servicioComplementarios" type="soap-enc:Array" />
+          <xsd:element name="insumos" type="soap-enc:Array" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeLiquidarSifaOut">
+        <xsd:all>
+          <xsd:element name="ubl" type="xsd:int" />
+          <xsd:element name="producto" type="xsd:int" />
+          <xsd:element name="nombreProducto" type="xsd:string" />
+          <xsd:element name="abreviadoProducto" type="xsd:string" />
+          <xsd:element name="nombreUbl" type="xsd:string" />
+          <xsd:element name="abreviadoUbl" type="xsd:string" />
+          <xsd:element name="codigoCuenta" type="xsd:int" />
+          <xsd:element name="nombreCuenta" type="xsd:string" />
+          <xsd:element name="abreviadoCuenta" type="xsd:string" />
+          <xsd:element name="cotizacion" type="tns:Sifa_typeCotizacion" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeliquidarFullTarifaSifaIn">
+        <xsd:all>
+          <xsd:element name="detalle" type="tns:ArrayOfAgw_typeGuiaDetalle" />
+          <xsd:element name="nivel_servicio" type="xsd:int" />
+          <xsd:element name="recaudos" type="tns:ArrayOfAgw_typeGuiaDetalleRecaudo" />
+          <xsd:element name="cnit" type="xsd:string" />
+          <xsd:element name="cdiv" type="xsd:string" />
+          <xsd:element name="rcodigo_cm_ciudad" type="xsd:string" />
+          <xsd:element name="dcodigo_cm_ciudad" type="xsd:string" />
+          <xsd:element name="codigo_cuenta" type="xsd:int" />
+          <xsd:element name="valor_declarado" type="xsd:float" />
+          <xsd:element name="liquidacion_enguia" type="xsd:string" />
+          <xsd:element name="liquidacion_endespacho" type="xsd:string" />
+          <xsd:element name="codigo_producto" type="xsd:int" />
+          <xsd:element name="token" type="xsd:string" />
+          <xsd:element name="full_tarifa" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSifa_typeDetalleFullTarifa">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soap-enc:Array">
+            <xsd:attribute wsdl:arrayType="tns:Sifa_typeDetalleFullTarifa[]" ref="soap-enc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Sifa_typeDetalleFullTarifa">
+        <xsd:all>
+          <xsd:element name="largo" type="xsd:float" />
+          <xsd:element name="ancho" type="xsd:float" />
+          <xsd:element name="alto" type="xsd:float" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="pesoReal" type="xsd:float" />
+          <xsd:element name="pesoRealTotal" type="xsd:float" />
+          <xsd:element name="pesoVolumen" type="xsd:float" />
+          <xsd:element name="pesoVolumenTotal" type="xsd:float" />
+          <xsd:element name="pesoLiquidado" type="xsd:float" />
+          <xsd:element name="fleteFijo" type="xsd:float" />
+          <xsd:element name="cotizadoTarifaPlena" type="xsd:boolean" />
+          <xsd:element name="ubl" type="xsd:int" />
+          <xsd:element name="referencia" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Sifa_typeCotizacionFullTarifa">
+        <xsd:all>
+          <xsd:element name="pesoLiquidado" type="xsd:float" />
+          <xsd:element name="fleteFijo" type="xsd:float" />
+          <xsd:element name="fleteVariable" type="xsd:float" />
+          <xsd:element name="fleteTotal" type="xsd:float" />
+          <xsd:element name="unidades" type="xsd:int" />
+          <xsd:element name="volumen" type="xsd:float" />
+          <xsd:element name="pesoReal" type="xsd:float" />
+          <xsd:element name="cotizadoTarifaPlena" type="xsd:boolean" />
+          <xsd:element name="detalles" type="tns:ArrayOfSifa_typeDetalleFullTarifa" />
+          <xsd:element name="nivelesServicios" type="soap-enc:Array" />
+          <xsd:element name="servicioComplementarios" type="soap-enc:Array" />
+          <xsd:element name="insumos" type="soap-enc:Array" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Agw_typeLiquidarFullTarifaSifaOut">
+        <xsd:all>
+          <xsd:element name="ubl" type="xsd:int" />
+          <xsd:element name="producto" type="xsd:int" />
+          <xsd:element name="nombreProducto" type="xsd:string" />
+          <xsd:element name="abreviadoProducto" type="xsd:string" />
+          <xsd:element name="nombreUbl" type="xsd:string" />
+          <xsd:element name="abreviadoUbl" type="xsd:string" />
+          <xsd:element name="codigoCuenta" type="xsd:int" />
+          <xsd:element name="nombreCuenta" type="xsd:string" />
+          <xsd:element name="abreviadoCuenta" type="xsd:string" />
+          <xsd:element name="cotizacion" type="tns:Sifa_typeCotizacion" />
+          <xsd:element name="cotizacionPlena" type="tns:Sifa_typeCotizacionFullTarifa" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Guias_generarGuiaIn">
+    <wsdl:part name="p" type="tns:Agw_typeGenerarGuiaIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarGuiaOut">
+    <wsdl:part name="return" type="tns:Agw_typeGenerarGuiaOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_anularGuiaIn">
+    <wsdl:part name="p" type="tns:Agw_typeAnularGuiaIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_anularGuiaOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="Guias_liquidacionGuiaIn">
+    <wsdl:part name="p" type="tns:Agw_liquidacionGuiaIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_liquidacionGuiaOut">
+    <wsdl:part name="return" type="tns:Agw_liquidacionGuiaOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarDespachoIn">
+    <wsdl:part name="p" type="tns:Agw_typeGenerarDespachoIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarDespachoOut">
+    <wsdl:part name="return" type="tns:ArrayOfAgw_typeGenerarDespachoOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarDespacharLevantePrevioIn">
+    <wsdl:part name="p" type="tns:Agw_typeGenerarDespachoLevantePrevioIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarDespacharLevantePrevioOut">
+    <wsdl:part name="return" type="tns:ArrayOfAgw_typeGenerarDespachoBasicoOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_reimprimirGuiaIn">
+    <wsdl:part name="p" type="tns:Agw_typeReimprimirGuiaIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_reimprimirGuiaOut">
+    <wsdl:part name="return" type="tns:Agw_typeReimprimirGuiaOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_reimprimirDespachoIn">
+    <wsdl:part name="p" type="tns:Agw_typeReimprimirDespachoIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_reimprimirDespachoOut">
+    <wsdl:part name="return" type="tns:Agw_typeReimprimirDespachoOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_reimprimirDespachoPlanoIn">
+    <wsdl:part name="p" type="tns:Agw_typeReimprimirDespachoPlanoIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_reimprimirDespachoPlanoOut">
+    <wsdl:part name="return" type="tns:Agw_typeReimprimirDespachoPlanoOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_consultarDespachosIn">
+    <wsdl:part name="p" type="tns:Agw_typeconsultarDespachosIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_consultarDespachosOut">
+    <wsdl:part name="return" type="tns:Agw_typeconsultarDespachosOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_consultarRetornoRDFDIn">
+    <wsdl:part name="p" type="tns:Agw_typeConsultarRetornoRDFDIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_consultarRetornoRDFDOut">
+    <wsdl:part name="return" type="tns:Agw_typeConsultarRetornoRDFDOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_actualizarPesoVolumenRetornoRDFDIn">
+    <wsdl:part name="p" type="tns:Agw_typeActualizarPesoVolumenRetornoRDFDIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_actualizarPesoVolumenRetornoRDFDOut">
+    <wsdl:part name="return" type="tns:Agw_typeActualizarPesoVolumenRetornoRDFDOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarDespachoRDFDIn">
+    <wsdl:part name="p" type="tns:Agw_typeGenerarDespachoRDFDIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarDespachoRDFDOut">
+    <wsdl:part name="return" type="tns:Type_void" />
+  </wsdl:message>
+  <wsdl:message name="Guias_rastreoSimpleIn">
+    <wsdl:part name="p" type="tns:Agw_typeRastreoSimpleIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_rastreoSimpleOut">
+    <wsdl:part name="return" type="tns:ArrayOfAgw_typeRastreoSimpleOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_rastreoExtendidoIn">
+    <wsdl:part name="p" type="tns:Agw_typeRastreoExtendidoIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_rastreoExtendidoOut">
+    <wsdl:part name="return" type="tns:ArrayOfAgw_typeRastreoExtendidoOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_detalleDespachoIn">
+    <wsdl:part name="p" type="tns:Agw_detalleDespachoIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_detalleDespachoOut">
+    <wsdl:part name="return" type="tns:Agw_detalleDespachoOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_estadoRecaudoIn">
+    <wsdl:part name="p" type="tns:Agw_estadoRecaudoIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_estadoRecaudoOut">
+    <wsdl:part name="return" type="tns:Agw_estadoRecaudoOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_ciudadesIn">
+    <wsdl:part name="p" type="tns:Agw_ciudadesIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_ciudadesOut">
+    <wsdl:part name="return" type="tns:ArrayOfAgw_ciudadesOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarDespachoMovilIn">
+    <wsdl:part name="p" type="tns:Agw_generarDespachoMovilIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarDespachoMovilOut">
+    <wsdl:part name="return" type="tns:ArrayOfAgw_generarDespachoMovilOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_imprimirRotulosIn">
+    <wsdl:part name="p" type="tns:Agw_imprimirRotulosIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_imprimirRotulosOut">
+    <wsdl:part name="return" type="tns:Agw_imprimirRotulosOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_reimprimirGuiasIn">
+    <wsdl:part name="p" type="tns:Agw_typeReimprimirGuiasIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_reimprimirGuiasOut">
+    <wsdl:part name="return" type="tns:Agw_typeReimprimirGuiasOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarGuiaInterIn">
+    <wsdl:part name="p" type="tns:Agw_typeGenerarGuiaInterIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_generarGuiaInterOut">
+    <wsdl:part name="return" type="tns:Agw_typeGenerarGuiaInterOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_editarGuiaIn">
+    <wsdl:part name="p" type="tns:Agw_typeEditarGuiaIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_editarGuiaOut">
+    <wsdl:part name="return" type="tns:Agw_typeEditarGuiaOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_rotuloPrevioIn">
+    <wsdl:part name="p" type="tns:Agw_rotuloPrevioIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_rotuloPrevioOut">
+    <wsdl:part name="return" type="tns:Agw_rotuloPrevioOut" />
+  </wsdl:message>
+  <wsdl:message name="Guias_novedadReetiquetadoIn">
+    <wsdl:part name="p" type="tns:Agw_typeNovedadReetiquetadoIn" />
+  </wsdl:message>
+  <wsdl:message name="Guias_novedadReetiquetadoOut">
+    <wsdl:part name="return" type="tns:Agw_typeNovedadReetiquetadoOut" />
+  </wsdl:message>
+  <wsdl:message name="Sifa_sugerirSifaIn">
+    <wsdl:part name="p" type="tns:Agw_typeSugerirSifaIn" />
+  </wsdl:message>
+  <wsdl:message name="Sifa_sugerirSifaOut">
+    <wsdl:part name="return" type="tns:Agw_typeSugerirSifaOut" />
+  </wsdl:message>
+  <wsdl:message name="Sifa_liquidarSifaIn">
+    <wsdl:part name="p" type="tns:Agw_typeliquidarSifaIn" />
+  </wsdl:message>
+  <wsdl:message name="Sifa_liquidarSifaOut">
+    <wsdl:part name="return" type="tns:Agw_typeLiquidarSifaOut" />
+  </wsdl:message>
+  <wsdl:message name="Sifa_liquidarFullTarifaSifaIn">
+    <wsdl:part name="p" type="tns:Agw_typeliquidarFullTarifaSifaIn" />
+  </wsdl:message>
+  <wsdl:message name="Sifa_liquidarFullTarifaSifaOut">
+    <wsdl:part name="return" type="tns:Agw_typeLiquidarFullTarifaSifaOut" />
+  </wsdl:message>
+  <wsdl:portType name="JRpcServerSoapManagerPort">
+    <wsdl:operation name="Guias_generarGuia">
+      <documentation>Generar guía</documentation>
+      <wsdl:input message="tns:Guias_generarGuiaIn" />
+      <wsdl:output message="tns:Guias_generarGuiaOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_anularGuia">
+      <documentation>Anular guía</documentation>
+      <wsdl:input message="tns:Guias_anularGuiaIn" />
+      <wsdl:output message="tns:Guias_anularGuiaOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_liquidacionGuia">
+      <documentation>Método que permite consultar los valores de liquidacion de la guía.</documentation>
+      <wsdl:input message="tns:Guias_liquidacionGuiaIn" />
+      <wsdl:output message="tns:Guias_liquidacionGuiaOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarDespacho">
+      <documentation>Genera el despacho para un grupo de guias que se especifique.
+Se genera un despacho por cada nit-div diferente que tengan las guias.
+Puede retornar multiples registros.</documentation>
+      <wsdl:input message="tns:Guias_generarDespachoIn" />
+      <wsdl:output message="tns:Guias_generarDespachoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarDespacharLevantePrevio">
+      <documentation>Genera el despacho para un grupo de identificadores de clientes con levante previo.
+Se genera un despacho por cada id cliente diferente que tengan guias y levantes cargadas previamente.
+Puede retornar multiples registros.</documentation>
+      <wsdl:input message="tns:Guias_generarDespacharLevantePrevioIn" />
+      <wsdl:output message="tns:Guias_generarDespacharLevantePrevioOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_reimprimirGuia">
+      <documentation>Reimprimir guia</documentation>
+      <wsdl:input message="tns:Guias_reimprimirGuiaIn" />
+      <wsdl:output message="tns:Guias_reimprimirGuiaOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_reimprimirDespacho">
+      <documentation>Reimprimir despacho</documentation>
+      <wsdl:input message="tns:Guias_reimprimirDespachoIn" />
+      <wsdl:output message="tns:Guias_reimprimirDespachoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_reimprimirDespachoPlano">
+      <documentation>Reimprimir despacho POS</documentation>
+      <wsdl:input message="tns:Guias_reimprimirDespachoPlanoIn" />
+      <wsdl:output message="tns:Guias_reimprimirDespachoPlanoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_consultarDespachos">
+      <documentation>Consultar despachos generados</documentation>
+      <wsdl:input message="tns:Guias_consultarDespachosIn" />
+      <wsdl:output message="tns:Guias_consultarDespachosOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_consultarRetornoRDFD">
+      <documentation>Consultar guia retorno RDFD</documentation>
+      <wsdl:input message="tns:Guias_consultarRetornoRDFDIn" />
+      <wsdl:output message="tns:Guias_consultarRetornoRDFDOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_actualizarPesoVolumenRetornoRDFD">
+      <documentation>Actualizar peso y volumen de guia retorno RDFD</documentation>
+      <wsdl:input message="tns:Guias_actualizarPesoVolumenRetornoRDFDIn" />
+      <wsdl:output message="tns:Guias_actualizarPesoVolumenRetornoRDFDOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarDespachoRDFD">
+      <documentation>Generar despacho RDFD</documentation>
+      <wsdl:input message="tns:Guias_generarDespachoRDFDIn" />
+      <wsdl:output message="tns:Guias_generarDespachoRDFDOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_rastreoSimple">
+      <documentation>Rastrear guia</documentation>
+      <wsdl:input message="tns:Guias_rastreoSimpleIn" />
+      <wsdl:output message="tns:Guias_rastreoSimpleOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_rastreoExtendido">
+      <documentation>Rastrear guia</documentation>
+      <wsdl:input message="tns:Guias_rastreoExtendidoIn" />
+      <wsdl:output message="tns:Guias_rastreoExtendidoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_detalleDespacho">
+      <documentation>Devuelve las guias incluidas en un despacho</documentation>
+      <wsdl:input message="tns:Guias_detalleDespachoIn" />
+      <wsdl:output message="tns:Guias_detalleDespachoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_estadoRecaudo">
+      <documentation>Devuelve el estado de un recaudo, se puede consultar por codigo_remision o por reference del recaudo</documentation>
+      <wsdl:input message="tns:Guias_estadoRecaudoIn" />
+      <wsdl:output message="tns:Guias_estadoRecaudoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_ciudades">
+      <documentation>Ciudades activas al momento de la consultas.</documentation>
+      <wsdl:input message="tns:Guias_ciudadesIn" />
+      <wsdl:output message="tns:Guias_ciudadesOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarDespachoMovil">
+      <documentation>Ciudades disponibles</documentation>
+      <wsdl:input message="tns:Guias_generarDespachoMovilIn" />
+      <wsdl:output message="tns:Guias_generarDespachoMovilOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_imprimirRotulos">
+      <documentation>@param Agw_imprimirRotulosIn</documentation>
+      <wsdl:input message="tns:Guias_imprimirRotulosIn" />
+      <wsdl:output message="tns:Guias_imprimirRotulosOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_reimprimirGuias">
+      <documentation>Reimprimir multiples guias</documentation>
+      <wsdl:input message="tns:Guias_reimprimirGuiasIn" />
+      <wsdl:output message="tns:Guias_reimprimirGuiasOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarGuiaInter">
+      <documentation>Generar guía Internacional</documentation>
+      <wsdl:input message="tns:Guias_generarGuiaInterIn" />
+      <wsdl:output message="tns:Guias_generarGuiaInterOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_editarGuia">
+      <documentation>Editar guía</documentation>
+      <wsdl:input message="tns:Guias_editarGuiaIn" />
+      <wsdl:output message="tns:Guias_editarGuiaOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_rotuloPrevio">
+      <documentation>Webservice para generar etiqueta previa, ya sea la data o el PDF en base 64</documentation>
+      <wsdl:input message="tns:Guias_rotuloPrevioIn" />
+      <wsdl:output message="tns:Guias_rotuloPrevioOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Guias_novedadReetiquetado">
+      <documentation>Crea una novedad en el sistema en el cual cuando soliciten un código de unidad entrada, esta debe 
+imprimir la unidad de salida</documentation>
+      <wsdl:input message="tns:Guias_novedadReetiquetadoIn" />
+      <wsdl:output message="tns:Guias_novedadReetiquetadoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sifa_sugerirSifa">
+      <documentation>sugerir Sifa</documentation>
+      <wsdl:input message="tns:Sifa_sugerirSifaIn" />
+      <wsdl:output message="tns:Sifa_sugerirSifaOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sifa_liquidarSifa">
+      <documentation>liquidar Sifa</documentation>
+      <wsdl:input message="tns:Sifa_liquidarSifaIn" />
+      <wsdl:output message="tns:Sifa_liquidarSifaOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sifa_liquidarFullTarifaSifa">
+      <documentation>liquidar Full Tarifa Sifa</documentation>
+      <wsdl:input message="tns:Sifa_liquidarFullTarifaSifaIn" />
+      <wsdl:output message="tns:Sifa_liquidarFullTarifaSifaOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JRpcServerSoapManagerBinding" type="tns:JRpcServerSoapManagerPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="Guias_generarGuia">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_generarGuia" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_anularGuia">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_anularGuia" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_liquidacionGuia">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_liquidacionGuia" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarDespacho">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_generarDespacho" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarDespacharLevantePrevio">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_generarDespacharLevantePrevio" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_reimprimirGuia">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_reimprimirGuia" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_reimprimirDespacho">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_reimprimirDespacho" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_reimprimirDespachoPlano">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_reimprimirDespachoPlano" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_consultarDespachos">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_consultarDespachos" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_consultarRetornoRDFD">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_consultarRetornoRDFD" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_actualizarPesoVolumenRetornoRDFD">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_actualizarPesoVolumenRetornoRDFD" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarDespachoRDFD">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_generarDespachoRDFD" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_rastreoSimple">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_rastreoSimple" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_rastreoExtendido">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_rastreoExtendido" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_detalleDespacho">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_detalleDespacho" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_estadoRecaudo">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_estadoRecaudo" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_ciudades">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_ciudades" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarDespachoMovil">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_generarDespachoMovil" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_imprimirRotulos">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_imprimirRotulos" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_reimprimirGuias">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_reimprimirGuias" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_generarGuiaInter">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_generarGuiaInter" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_editarGuia">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_editarGuia" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_rotuloPrevio">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_rotuloPrevio" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Guias_novedadReetiquetado">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Guias_novedadReetiquetado" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sifa_sugerirSifa">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Sifa_sugerirSifa" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sifa_liquidarSifa">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Sifa_liquidarSifa" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sifa_liquidarFullTarifaSifa">
+      <soap:operation soapAction="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php#Sifa_liquidarFullTarifaSifa" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JRpcServerSoapManagerService">
+    <wsdl:port name="JRpcServerSoapManagerPort" binding="tns:JRpcServerSoapManagerBinding">
+      <soap:address location="http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

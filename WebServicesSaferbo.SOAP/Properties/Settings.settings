@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WebServicesSaferbo.SOAP.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WebServicesSaferbo_SOAP_WebServicesServientrega_GeneracionGuias" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://190.131.194.159:8059/GeneracionGuias.asmx</Value>
+    </Setting>
+    <Setting Name="WebServicesSaferbo_SOAP_WebServicesCoordinadora_JRpcServerSoapManagerService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://sandbox.coordinadora.com/agw/ws/guias/1.6/server.php</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
