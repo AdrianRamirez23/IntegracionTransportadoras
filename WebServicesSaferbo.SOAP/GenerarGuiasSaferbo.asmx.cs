@@ -2,6 +2,7 @@
 using SendGrid;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -30,7 +31,7 @@ namespace WebServicesSaferbo.SOAP
             switch (remdes.TipoTransportadora)
             {
                 case "Saferbo":
-                    string url = "https://app.saferbo.com/webservices/ws.generar.guias.directo.php?destino=" + remdes.idciudadestino + "&origen=" + remdes.idciudadespacho + "&ds_peso=" + remdes.dskilos + "&ds_valoracion=" + remdes.dsvalordec + "&ds_largo=" + remdes.ds_largo + "&ds_ancho=" + remdes.ds_ancho + "&ds_alto=" + remdes.ds_alto + "&ds_pesovol=" + remdes.ds_pesovol + "&ds_contraentrega=" + remdes.ds_contraentrega + "&tipoacceso=" + remdes.tipoacceso + "&tipodatos=" + remdes.tipodatos + "&ds_cantidad=" + remdes.dsunidad + "&dscodigocliente=" + remdes.dscodigocliente + "&idnegociacion=" + remdes.idnegociacion + "&idtipoenvio=" + remdes.idtipoenvio + "&idtipoliquidacion=" + remdes.idtipoliquidacion + "&idtarifaxtrayecto=" + remdes.idtarifaxtrayecto + "&dsnitr=" + remdes.dsnitr + "&dsnombrer=" + remdes.dsnombrer + "=&dstelr=" + remdes.dstelr + "&dsdirr=" + remdes.dsdirr + "&dsunidad=" + remdes.dsunidad + "&dskilos=" + remdes.dskilos + "&dsvalordec=" + remdes.dsvalordec + "&dsobs_1=" + remdes.dsobs_1 + "&dsobs_2=" + remdes.dsobs_2 + "&dsobs_3=" + remdes.dsobs_3 + "&dscodigodestinatario=" + remdes.dscodigodestinatario + "&dsnitd=" + remdes.dsnitd + "&dsnombred=" + remdes.dsnombred + "&dsteld=" + remdes.dsteld + "&dsdird=" + remdes.dsdird + "&dsvalorrecaudar=" + remdes.dsvalorrecaudar + "&arunidades=" + remdes.arunidades + "&idconsec=" + remdes.idconsec + "&solocotizar=" + remdes.solocotizar + "&generarguia=" + remdes.generarguia + "";
+                    string url = ConfigurationManager.AppSettings["URL_Saferbo"] + remdes.idciudadestino + "&origen=" + remdes.idciudadespacho + "&ds_peso=" + remdes.dskilos + "&ds_valoracion=" + remdes.dsvalordec + "&ds_largo=" + remdes.ds_largo + "&ds_ancho=" + remdes.ds_ancho + "&ds_alto=" + remdes.ds_alto + "&ds_pesovol=" + remdes.ds_pesovol + "&ds_contraentrega=" + remdes.ds_contraentrega + "&tipoacceso=" + remdes.tipoacceso + "&tipodatos=" + remdes.tipodatos + "&ds_cantidad=" + remdes.dsunidad + "&dscodigocliente=" + ConfigurationManager.AppSettings["dscodigocliente"] + " & idnegociacion=" + remdes.idnegociacion + "&idtipoenvio=" + remdes.idtipoenvio + "&idtipoliquidacion=" + remdes.idtipoliquidacion + "&idtarifaxtrayecto=" + remdes.idtarifaxtrayecto + "&dsnitr=" + remdes.dsnitr + "&dsnombrer=" + remdes.dsnombrer + "=&dstelr=" + remdes.dstelr + "&dsdirr=" + remdes.dsdirr + "&dsunidad=" + remdes.dsunidad + "&dskilos=" + remdes.dskilos + "&dsvalordec=" + remdes.dsvalordec + "&dsobs_1=" + remdes.dsobs_1 + "&dsobs_2=" + remdes.dsobs_2 + "&dsobs_3=" + remdes.dsobs_3 + "&dscodigodestinatario=" + remdes.dscodigodestinatario + "&dsnitd=" + remdes.dsnitd + "&dsnombred=" + remdes.dsnombred + "&dsteld=" + remdes.dsteld + "&dsdird=" + remdes.dsdird + "&dsvalorrecaudar=" + remdes.dsvalorrecaudar + "&arunidades=" + remdes.arunidades + "&idconsec=" + remdes.idconsec + "&solocotizar=" + remdes.solocotizar + "&generarguia=" + remdes.generarguia + "";
                     var json = new WebClient().DownloadString(url);
                     string[] response = json.Split('|');
                     string[] rem = response[0].Split('¿');
@@ -49,10 +50,10 @@ namespace WebServicesSaferbo.SOAP
 
                     WebServicesServientrega.AuthHeader objAuth = new WebServicesServientrega.AuthHeader();
 
-                    objAuth.Id_CodFacturacion = "SER408";
-                    objAuth.login = "Luis1937";
-                    objAuth.Nombre_Cargue = "CARGA INTREGRACIÓN BATA";
-                    objAuth.pwd = "MZR0zNqnI/KplFlYXiFk7m8/G/Iqxb3O";
+                    objAuth.Id_CodFacturacion = ConfigurationManager.AppSettings["Id_CodFacturacion"];
+                    objAuth.login = ConfigurationManager.AppSettings["login"];
+                    objAuth.Nombre_Cargue = ConfigurationManager.AppSettings["Nombre_Cargue"];
+                    objAuth.pwd = ConfigurationManager.AppSettings["pwd"];
 
                     proGuias.AuthHeaderValue = objAuth;
 
@@ -104,7 +105,7 @@ namespace WebServicesSaferbo.SOAP
 
                     res.guia = respuesta[0];
 
-                    string sfile = "d:\\Guias\\reportSticket_" + respuesta[0] + ".pdf";
+                    string sfile = ConfigurationManager.AppSettings["rutaGuiaPDF"] + respuesta[0] + ".pdf";
                     File.WriteAllBytes(sfile, bytereport);
 
                     res.ULR_Rotulo = sfile;
@@ -114,14 +115,14 @@ namespace WebServicesSaferbo.SOAP
                 case "Coordinadora":
 
                     int cantidadEnvio = 1;
-                    WebServicesCoordinadora.JRpcServerSoapManagerService webService = new  JRpcServerSoapManagerService();
+                    WebServicesCoordinadora.JRpcServerSoapManagerService webService = new JRpcServerSoapManagerService();
 
                     WebServicesCoordinadora.Agw_typeGenerarGuiaIn objEnvio = new Agw_typeGenerarGuiaIn();
 
                     objEnvio.codigo_remision = "";
                     string fechahoy = DateTime.Now.ToString("d");
                     string[] fechaDiv = fechahoy.Split('/');
-                    objEnvio.id_cliente = 26539;
+                    objEnvio.id_cliente = Convert.ToInt32(ConfigurationManager.AppSettings["Id_Cliente"]);
                     objEnvio.id_remitente =0 ;
                     objEnvio.nit_remitente=remdes.dsnitr;
                     objEnvio.nombre_remitente=remdes.dsnombrer;
@@ -185,8 +186,8 @@ namespace WebServicesSaferbo.SOAP
                     objEnvio.nro_doc_radicados = "";
                     objEnvio.nro_sobre = "";
                     objEnvio.codigo_vendedor = 0;
-                    objEnvio.usuario = "manisol.ws680";
-                    objEnvio.clave = "64ac62020a0e515edff284c9fca6ef5039011b917998661fb6ae30c6b8b6d02c";
+                    objEnvio.usuario = ConfigurationManager.AppSettings["usuario"];
+                    objEnvio.clave = new Utils.Utilidades().GetSHA256(ConfigurationManager.AppSettings["clave"]);
 
 
                     Agw_typeGenerarGuiaOut result = webService.Guias_generarGuia(objEnvio);
