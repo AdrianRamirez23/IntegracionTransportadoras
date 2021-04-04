@@ -14,7 +14,6 @@ namespace WebServicesSaferbo.SOAP.Models
         public string dirr { get; set; } 
         public string idciudadespacho { get; set; }
         public string idciudadestino { get; set; }
-        public int idtarifaxtrayecto { get; set; }
         public List<Unidades> Unidades { get; set; }
         public bool _contraentrega { get; set; }
         public decimal unidades { get; set; }

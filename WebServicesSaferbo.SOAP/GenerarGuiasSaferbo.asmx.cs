@@ -6,6 +6,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 using WebServicesSaferbo.SOAP.Models;
@@ -40,7 +41,7 @@ namespace WebServicesSaferbo.SOAP
                         kilos = kilos + unidad._pesovol;
                     }
 
-                    string url = ConfigurationManager.AppSettings["URL_Saferbo"] + remdes.idciudadestino + "&origen=" + remdes.idciudadespacho + "&ds_peso=" + kilos + "&ds_valoracion=" + remdes.valordec + "&ds_largo=" + 1 + "&ds_ancho=" + 1 + "&ds_alto=" + 1 + "&ds_pesovol=" + kilos + "&ds_contraentrega=" + 0 + "&tipoacceso=" + 1 + "&tipodatos=" + 2 + "&ds_cantidad=" + 0 + "&dscodigocliente=" + ConfigurationManager.AppSettings["dscodigocliente"] + "&idnegociacion=" + 1 + "&idtipoenvio=" + 1 + "&idtipoliquidacion=" + 1 + "&idtarifaxtrayecto=" + remdes.idtarifaxtrayecto + "&dsnitr=" + remdes.nitr + "&dsnombrer=" + remdes.nombrer + "&dstelr=" + remdes.telr + "&dsdirr=" + remdes.dirr + "&dsunidad=" + 0 + "&dskilos=" + 0 + "&dsvalordec=" + remdes.valordec + "&dsobs_1=" + remdes.obs_1 + "&dsobs_2=" + remdes.obs_2 + "&dsobs_3=" + remdes.obs_3 + "&dscodigodestinatario=" + 000 + "&dsnitd=" + remdes.nitd + "&dsnombred=" + remdes.nombred + "&dsteld=" + remdes.teld + "&dsdird=" + remdes.dird + "&dsvalorrecaudar=" + remdes.valorrecaudar + "&arunidades=" + remdes.cantidadCajas + "&idconsec=" + 0 + "&solocotizar=0&generarguia=1";
+                    string url = ConfigurationManager.AppSettings["URL_Saferbo"] + remdes.idciudadestino + "&origen=" + remdes.idciudadespacho + "&ds_peso=" + kilos + "&ds_valoracion=" + remdes.valordec + "&ds_largo=" + 1 + "&ds_ancho=" + 1 + "&ds_alto=" + 1 + "&ds_pesovol=" + kilos + "&ds_contraentrega=" + 0 + "&tipoacceso=" + 1 + "&tipodatos=" + 2 + "&ds_cantidad=" + 0 + "&dscodigocliente=" + ConfigurationManager.AppSettings["dscodigocliente"] + "&idnegociacion=" + 1 + "&idtipoenvio=" + 1 + "&idtipoliquidacion=" + 1 + "&idtarifaxtrayecto=" + 2 + "&dsnitr=" + remdes.nitr + "&dsnombrer=" + remdes.nombrer + "&dstelr=" + remdes.telr + "&dsdirr=" + remdes.dirr + "&dsunidad=" + 0 + "&dskilos=" + 0 + "&dsvalordec=" + remdes.valordec + "&dsobs_1=" + remdes.obs_1 + "&dsobs_2=" + remdes.obs_2 + "&dsobs_3=" + remdes.obs_3 + "&dscodigodestinatario=" + 000 + "&dsnitd=" + remdes.nitd + "&dsnombred=" + remdes.nombred + "&dsteld=" + remdes.teld + "&dsdird=" + remdes.dird + "&dsvalorrecaudar=" + remdes.valorrecaudar + "&arunidades=" + remdes.cantidadCajas + "&idconsec=" + 0 + "&solocotizar=0&generarguia=1";
                     string urlfinal = url.Replace(" ", "%20");
                     var json = new WebClient().DownloadString(urlfinal);
                     string[] response = json.Split('|');
@@ -59,7 +60,7 @@ namespace WebServicesSaferbo.SOAP
                         res.respuesta = "Se genera la guia correctamente";
                     }
 
-                    
+
                     break;
                 case "Servientrega":
                     WebServicesServientrega.GeneracionGuias proGuias = new WebServicesServientrega.GeneracionGuias();
@@ -79,75 +80,77 @@ namespace WebServicesSaferbo.SOAP
 
                     proGuias.AuthHeaderValue = objAuth;
 
-                    
-                        cargueExterno[0].objEnvios[0] = new WebServicesServientrega.EnviosExterno();
 
-                        WebServicesServientrega.EnviosExterno arrEnvios = new WebServicesServientrega.EnviosExterno();
-                        arrEnvios.Nom_Contacto = remdes.nombred;
-                        arrEnvios.Des_Ciudad = remdes.idciudadestino;
-                        arrEnvios.Des_DepartamentoDestino = "";
-                        arrEnvios.Num_Piezas = Convert.ToInt32(remdes.cantidadCajas);
-                        arrEnvios.Des_TipoGuia = 2;
-                        arrEnvios.Ide_Producto = 2;
-                        arrEnvios.Des_CiudadOrigen = remdes.idciudadespacho;
-                        arrEnvios.Des_DepartamentoDestino = ConfigurationManager.AppSettings["deptarmentoDestino"];
-                        arrEnvios.Des_IdArchivoOrigen ="1";
-                        arrEnvios.Des_Direccion = remdes.dird;
-                        arrEnvios.Des_MedioTransporte = 1;
-                        arrEnvios.Des_TipoDuracionTrayecto = 1;
-                        arrEnvios.Des_Telefono = remdes.teld;
-                        arrEnvios.Des_DiceContener = remdes.diceContener;
+                    cargueExterno[0].objEnvios[0] = new WebServicesServientrega.EnviosExterno();
 
-                        if (remdes._contraentrega)
-                        {
-                            arrEnvios.Des_FormaPago = 4;
-                        }
-                        else
-                        {
-                            arrEnvios.Des_FormaPago = 2;
-                        }
+                    WebServicesServientrega.EnviosExterno arrEnvios = new WebServicesServientrega.EnviosExterno();
+                    arrEnvios.Nom_Contacto = remdes.nombred;
+                    arrEnvios.Des_Ciudad = remdes.idciudadestino;
+                    arrEnvios.Des_DepartamentoDestino = "";
+                    arrEnvios.Num_Piezas = Convert.ToInt32(remdes.cantidadCajas);
+                    arrEnvios.Des_TipoGuia = 2;
+                    arrEnvios.Ide_Producto = 6;
+                    arrEnvios.Des_CiudadOrigen = remdes.idciudadespacho;
+                    arrEnvios.Des_DepartamentoDestino = ConfigurationManager.AppSettings["deptarmentoDestino"];
+                    arrEnvios.Des_IdArchivoOrigen = "1";
+                    arrEnvios.Des_Direccion = remdes.dird;
+                    arrEnvios.Des_MedioTransporte = 1;
+                    arrEnvios.Des_TipoDuracionTrayecto = 1;
+                    arrEnvios.Des_Telefono = remdes.teld;
+                    arrEnvios.Des_DiceContener = remdes.diceContener;
 
-                        arrEnvios.Num_ValorDeclaradoTotal = remdes.valordec;
-                        arrEnvios.Des_CorreoElectronico = "";
-                        arrEnvios.Est_CanalMayorista = false;
+                    if (remdes._contraentrega)
+                    {
+                        arrEnvios.Des_FormaPago = 4;
+                    }
+                    else
+                    {
+                        arrEnvios.Des_FormaPago = 2;
+                    }
 
-                        //cargueExterno[0].objEnvios[i].objEnviosUnidadEmpaqueCargue = new WebServicesServientrega.EnviosUnidadEmpaqueCargue[arrEnvios.Num_Piezas];
-                        //for (int pi = 0; pi < arrEnvios.Num_Piezas; pi++)
-                        //{
-                        //    var obj = new WebServicesServientrega.EnviosUnidadEmpaqueCargue();
-                        //    cargueExterno[0].objEnvios[i].objEnviosUnidadEmpaqueCargue[pi] = new WebServicesServientrega.EnviosUnidadEmpaqueCargue();
-                        //    obj.Des_IdArchivoOrigen = arrEnvios.Des_IdArchivoOrigen;
-                        //    obj.Num_Alto = remdes.Unidades[pi]._alto;
-                        //    obj.Num_Peso = remdes.Unidades[pi]._pesovol;
-                        //    obj.Num_Largo = remdes.Unidades[pi]._largo;
-                        //    obj.Num_Ancho = remdes.Unidades[pi]._ancho;
-                        //    obj.Des_DiceContener = remdes.diceContener;//"CONTENIDO DE LA UNIDAD DE EMPAQUE";
-                        //    obj.Num_Cantidad = 1;//Cantidad de piezas de la Unidad de Empaque
-                        //    obj.Num_ValorDeclarado = remdes.valordec.ToString();
-                        //    obj.Nom_UnidadEmpaque = ConfigurationManager.AppSettings["TipoEmpaqueServientrega"];//"UNIDAD DE EMPAQUE CREADA EN SISCLINET";
-                        //    obj.Des_UnidadLongitud = "cm";
-                        //    obj.Des_UnidadPeso = "kg";
-                        //    cargueExterno[0].objEnvios[0].objEnviosUnidadEmpaqueCargue[pi] = obj;
-                        //}
+                    arrEnvios.Num_ValorDeclaradoTotal = remdes.valordec;
+                    arrEnvios.Des_CorreoElectronico = "";
+                    arrEnvios.Est_CanalMayorista = false;
+
+
+
+                    arrEnvios.Nom_UnidadEmpaque = ConfigurationManager.AppSettings["TipoEmpaqueServientrega"];
+                    arrEnvios.Num_Alto = remdes.Unidades[0]._alto;
+                    arrEnvios.Num_Ancho = remdes.Unidades[0]._ancho;
+                    arrEnvios.Num_Largo = remdes.Unidades[0]._largo;
+                    arrEnvios.Num_PesoTotal = remdes.Unidades[0]._pesovol;
+                    arrEnvios.Num_Factura = remdes.obs_1;
+                    arrEnvios.Gen_Sobreporte = false;
+                    arrEnvios.Gen_Cajaporte = false;
+                    arrEnvios.Des_VlrCampoPersonalizado1 = remdes.obs_2;
+                    arrEnvios.Des_UnidadLongitud = "cm";
+                    arrEnvios.Des_UnidadPeso = "kg";
+                    arrEnvios.Num_Guia = 0;
+                    arrEnvios.Doc_Relacionado = remdes.nitd;
+                    arrEnvios.Ide_Num_Referencia_Dest = remdes.teld;
+                    arrEnvios.Num_Recaudo = remdes.valorrecaudar;
+
                   
-                        arrEnvios.Nom_UnidadEmpaque = ConfigurationManager.AppSettings["TipoEmpaqueServientrega"];
-                        arrEnvios.Num_Alto = remdes.Unidades[0]._alto;
-                        arrEnvios.Num_Ancho = remdes.Unidades[0]._ancho; 
-                        arrEnvios.Num_Largo = remdes.Unidades[0]._largo;
-                        arrEnvios.Num_PesoTotal = remdes.Unidades[0]._pesovol;
-                        arrEnvios.Num_Factura = remdes.obs_1;
-                        arrEnvios.Gen_Sobreporte = false;
-                        arrEnvios.Gen_Cajaporte = false;
-                        arrEnvios.Des_VlrCampoPersonalizado1 = remdes.obs_2;
-                        arrEnvios.Des_UnidadLongitud = "cm";
-                        arrEnvios.Des_UnidadPeso = "kg";
-                        arrEnvios.Num_Guia = 0;
-                        arrEnvios.Doc_Relacionado = remdes.nitd;
-                        arrEnvios.Ide_Num_Referencia_Dest = remdes.teld;
-                        arrEnvios.Num_Recaudo = remdes.valorrecaudar;
-                        cargueExterno[0].objEnvios[0] = arrEnvios;
-                    
+                    cargueExterno[0].objEnvios[0] = arrEnvios;
 
+                    cargueExterno[0].objEnvios[0].objEnviosUnidadEmpaqueCargue = new WebServicesServientrega.EnviosUnidadEmpaqueCargue[arrEnvios.Num_Piezas];
+                    for (int pi = 0; pi < arrEnvios.Num_Piezas; pi++)
+                    {
+                        var obj = new WebServicesServientrega.EnviosUnidadEmpaqueCargue();
+                        cargueExterno[0].objEnvios[0].objEnviosUnidadEmpaqueCargue[pi] = new WebServicesServientrega.EnviosUnidadEmpaqueCargue();
+                        obj.Des_IdArchivoOrigen = arrEnvios.Des_IdArchivoOrigen;
+                        obj.Num_Alto = remdes.Unidades[pi]._alto;
+                        obj.Num_Peso = remdes.Unidades[pi]._pesovol;
+                        obj.Num_Largo = remdes.Unidades[pi]._largo;
+                        obj.Num_Ancho = remdes.Unidades[pi]._ancho;
+                        obj.Des_DiceContener = remdes.diceContener;//"CONTENIDO DE LA UNIDAD DE EMPAQUE";
+                        obj.Num_Cantidad = 1;//Cantidad de piezas de la Unidad de Empaque
+                        obj.Num_ValorDeclarado = remdes.valordec.ToString();
+                        obj.Nom_UnidadEmpaque = ConfigurationManager.AppSettings["TipoEmpaqueServientrega"];//"UNIDAD DE EMPAQUE CREADA EN SISCLINET";
+                        obj.Des_UnidadLongitud = "cm";
+                        obj.Des_UnidadPeso = "kg";
+                        cargueExterno[0].objEnvios[0].objEnviosUnidadEmpaqueCargue[pi] = obj;
+                    }
 
 
                     string[] respuesta = new string[1];
@@ -237,6 +240,7 @@ namespace WebServicesSaferbo.SOAP
 
                     objEnvio.cuenta_contable = "";
                     objEnvio.centro_costos = "";
+                    
                     objEnvio.recaudos = new Agw_typeGuiaDetalleRecaudo[cantidadEnvio];
                     objEnvio.margen_izquierdo =2;
                     objEnvio.margen_superior = 2;
@@ -266,6 +270,20 @@ namespace WebServicesSaferbo.SOAP
                     try
                     {
                         Agw_typeGenerarGuiaOut result = webService.Guias_generarGuia(objEnvio);
+
+
+                        byte[] bytereported = new byte[1];
+
+                        bytereported = Convert.FromBase64String(result.pdf_guia);
+
+                        string sfile = ConfigurationManager.AppSettings["rutaGuiaPDF"] + result.codigo_remision + ".pdf";
+
+                        System.IO.FileStream stream =
+                        new FileStream(sfile, FileMode.CreateNew);
+                        System.IO.BinaryWriter writer =
+                        new BinaryWriter(stream);
+                        writer.Write(bytereported, 0, bytereported.Length);
+                        writer.Close();
 
                         res.guia = result.codigo_remision;
                         res.ULR_Rotulo = result.url_terceros;
