@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DomainApplication.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DomainApplication.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DomainApplication.Enums" />
+  <xs:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/DomainApplication" />
+  <xs:complexType name="ResponsePickUpRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DomainApplication.Enums" minOccurs="0" name="Error" nillable="true" type="q1:KindOfIssue" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DomainApplication" minOccurs="0" name="PickUpRequestList" nillable="true" type="q2:ArrayOfPickUpRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponsePickUpRequest" nillable="true" type="tns:ResponsePickUpRequest" />
+  <xs:complexType name="ArrayOfDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Document" nillable="true" type="tns:Document" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocument" nillable="true" type="tns:ArrayOfDocument" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Document" nillable="true" type="tns:Document" />
+  <xs:complexType name="ResponseDetailPickUp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CancelComment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancelDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="tns:ResponseError" />
+      <xs:element minOccurs="0" name="NumberPickUp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseDetailPickUp" nillable="true" type="tns:ResponseDetailPickUp" />
+  <xs:complexType name="ResponseError">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idError" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseError" nillable="true" type="tns:ResponseError" />
+  <xs:complexType name="ResponseCancel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="tns:ResponseError" />
+      <xs:element minOccurs="0" name="NumberPickUp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="stateResponse" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseCancel" nillable="true" type="tns:ResponseCancel" />
+  <xs:complexType name="ResponseValidTimePickup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndHourPickUp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndHourRequest" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="tns:ResponseError" />
+      <xs:element minOccurs="0" name="StartHourPickUp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartHourRequest" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseValidTimePickup" nillable="true" type="tns:ResponseValidTimePickup" />
+  <xs:complexType name="ArrayOfServiceDocumentPickUp">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceDocumentPickUp" nillable="true" type="tns:ServiceDocumentPickUp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceDocumentPickUp" nillable="true" type="tns:ArrayOfServiceDocumentPickUp" />
+  <xs:complexType name="ServiceDocumentPickUp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodDaneCiudad" type="xs:int" />
+      <xs:element minOccurs="0" name="DireccionRecoleccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="tns:ResponseError" />
+      <xs:element minOccurs="0" name="EstadoRecol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaCreacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaSolicitudRec" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id_EstadoRecol" type="xs:int" />
+      <xs:element minOccurs="0" name="MotivoNoRecoleccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Movimiento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreCiudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreDepartamento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroSolicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceDocumentPickUpMov" nillable="true" type="tns:ArrayOfServiceDocumentPickUp_Mov" />
+      <xs:element minOccurs="0" name="UltObservacionMobile" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceDocumentPickUp" nillable="true" type="tns:ServiceDocumentPickUp" />
+  <xs:complexType name="ArrayOfServiceDocumentPickUp_Mov">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceDocumentPickUp_Mov" nillable="true" type="tns:ServiceDocumentPickUp_Mov" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceDocumentPickUp_Mov" nillable="true" type="tns:ArrayOfServiceDocumentPickUp_Mov" />
+  <xs:complexType name="ServiceDocumentPickUp_Mov">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaMovimiento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="movimiento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="noRecoleccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="observacionSolicitud" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceDocumentPickUp_Mov" nillable="true" type="tns:ServiceDocumentPickUp_Mov" />
+</xs:schema>

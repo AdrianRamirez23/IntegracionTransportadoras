@@ -6,6 +6,8 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Web;
 using System.Web.Services;
@@ -57,7 +59,7 @@ namespace WebServicesSaferbo.SOAP
                     {
                         res.guia = rem[2];
                         res.ULR_Rotulo = response[4] + response[3];
-                        res.respuesta = "Se genera la guia correctamente";
+                        res.respuesta = "Se genera la guía correctamente";
                     }
 
 
@@ -98,6 +100,7 @@ namespace WebServicesSaferbo.SOAP
                     arrEnvios.Des_TipoDuracionTrayecto = 1;
                     arrEnvios.Des_Telefono = remdes.teld;
                     arrEnvios.Des_DiceContener = remdes.diceContener;
+                    arrEnvios.Recoleccion_Esporadica = "1";
 
                     if (remdes._contraentrega)
                     {
@@ -176,7 +179,7 @@ namespace WebServicesSaferbo.SOAP
                         File.WriteAllBytes(sfile, bytereport);
 
                         res.ULR_Rotulo = sfile;
-                        res.respuesta = "Se genera la guia correctamente";
+                        res.respuesta = "Se genera la guía correctamente";
                     }
 
 
@@ -287,7 +290,7 @@ namespace WebServicesSaferbo.SOAP
 
                         res.guia = result.codigo_remision;
                         res.ULR_Rotulo = result.url_terceros;
-                        res.respuesta = "Se genera la guia correctamente";
+                        res.respuesta = "Se genera la guía correctamente";
                     }
                     catch (Exception ex)
                     {
@@ -306,6 +309,42 @@ namespace WebServicesSaferbo.SOAP
             return res;
 
            
+        }
+
+        [WebMethod]
+
+        public SolicitudRecogidaConfirmacion SolicitudRecogida(Solicitud Sol)
+        {
+            SolicitudRecogidaConfirmacion confirmacion = new SolicitudRecogidaConfirmacion();
+            ServientregaRecogida.PickUpRequestClient Client = new ServientregaRecogida.PickUpRequestClient();
+
+            EndpointAddressBuilder endpoint = new EndpointAddressBuilder(Client.Endpoint.Address);
+
+            endpoint.Headers.Add(AddressHeader.CreateAddressHeader("User","http://tempuri.org/", ConfigurationManager.AppSettings["login"]));
+            endpoint.Headers.Add(AddressHeader.CreateAddressHeader("Password","http://tempuri.org/", ConfigurationManager.AppSettings["pwd"]));
+            endpoint.Headers.Add(AddressHeader.CreateAddressHeader("CodSer","http://tempuri.org/", ConfigurationManager.AppSettings["Id_CodFacturacion"]));
+            Client.Endpoint.Address = endpoint.ToEndpointAddress();
+
+            string[] guias = new string[Sol.listGuias.Count()];
+
+            for(int i = 0; i < Sol.listGuias.Count(), i++)
+            {
+                guias[i] = Sol.listGuias[i].GuiaID;
+            }
+
+            ServientregaRecogida.ResponsePickUpRequest req = Client.CreateRequestSporadic(guias, Sol.FechaRecodiga,Sol.HoraRecogida, Sol.ReferenciaAdicional);
+
+            if (req.PickUpRequestList[0].PickupRequestNumber == 0)
+            {
+                confirmacion.RequestID = "0";
+                confirmacion.MensajeRequest = "La guia no ha sido chequeada para solicitud de recodiga";
+            }
+            else
+            {
+                confirmacion.RequestID = req.PickUpRequestList[0].PickupRequestNumber.ToString();
+                confirmacion.MensajeRequest = "La solicitud de programación de recogida ha sido exitosa";
+            }
+            return confirmacion;
         }
     }
 }

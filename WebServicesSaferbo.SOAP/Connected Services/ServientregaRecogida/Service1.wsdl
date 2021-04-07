@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DomainApplication.Model" />
+      <xsd:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DomainApplication.Enums" />
+      <xsd:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/DomainApplication" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPickUpRequest_CreateRequestSporadic_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRequestSporadic" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_CreateRequestSporadic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRequestSporadicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_GetDetailPickUp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDetailPickUp" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_GetDetailPickUp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDetailPickUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_CancelPickUp_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelPickUp" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_CancelPickUp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelPickUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_getValidTimePickup_InputMessage">
+    <wsdl:part name="parameters" element="tns:getValidTimePickup" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_getValidTimePickup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getValidTimePickupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_getDetailMovementPickUp_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDetailMovementPickUp" />
+  </wsdl:message>
+  <wsdl:message name="IPickUpRequest_getDetailMovementPickUp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDetailMovementPickUpResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPickUpRequest">
+    <wsdl:operation name="CreateRequestSporadic">
+      <wsdl:documentation> Este método crea una solicitud de recolección. This method creates a new PickUp Request'</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IPickUpRequest/CreateRequestSporadic" message="tns:IPickUpRequest_CreateRequestSporadic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPickUpRequest/CreateRequestSporadicResponse" message="tns:IPickUpRequest_CreateRequestSporadic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailPickUp">
+      <wsdl:documentation> Este método obtiene el detalle de una solicitud de recolección. This method gets a PickUp Request information'</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IPickUpRequest/GetDetailPickUp" message="tns:IPickUpRequest_GetDetailPickUp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPickUpRequest/GetDetailPickUpResponse" message="tns:IPickUpRequest_GetDetailPickUp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelPickUp">
+      <wsdl:documentation> Este método cancela una solicitud de recolección. This method cancells a PickUp Request information'</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IPickUpRequest/CancelPickUp" message="tns:IPickUpRequest_CancelPickUp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPickUpRequest/CancelPickUpResponse" message="tns:IPickUpRequest_CancelPickUp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getValidTimePickup">
+      <wsdl:documentation> Este método obtiene los horarios de solicitud y de recolección. This method gets the schedule for making request and pickup'</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IPickUpRequest/getValidTimePickup" message="tns:IPickUpRequest_getValidTimePickup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPickUpRequest/getValidTimePickupResponse" message="tns:IPickUpRequest_getValidTimePickup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDetailMovementPickUp">
+      <wsdl:documentation> Este método obtiene la información de los movimientos y detalle de recolección. This method gets information about movements and details of pickup'</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IPickUpRequest/getDetailMovementPickUp" message="tns:IPickUpRequest_getDetailMovementPickUp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPickUpRequest/getDetailMovementPickUpResponse" message="tns:IPickUpRequest_getDetailMovementPickUp_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPickUpRequest" type="tns:IPickUpRequest">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateRequestSporadic">
+      <soap:operation soapAction="http://tempuri.org/IPickUpRequest/CreateRequestSporadic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailPickUp">
+      <soap:operation soapAction="http://tempuri.org/IPickUpRequest/GetDetailPickUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelPickUp">
+      <soap:operation soapAction="http://tempuri.org/IPickUpRequest/CancelPickUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getValidTimePickup">
+      <soap:operation soapAction="http://tempuri.org/IPickUpRequest/getValidTimePickup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDetailMovementPickUp">
+      <soap:operation soapAction="http://tempuri.org/IPickUpRequest/getDetailMovementPickUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IPickUpRequest" binding="tns:BasicHttpBinding_IPickUpRequest">
+      <soap:address location="http://190.131.194.159/PickUpRequest.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

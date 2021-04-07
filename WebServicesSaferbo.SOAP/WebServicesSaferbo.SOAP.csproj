@@ -79,7 +79,48 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest.disco" />
+    <None Include="Connected Services\ServientregaRecogida\configuration91.svcinfo" />
+    <None Include="Connected Services\ServientregaRecogida\configuration.svcinfo" />
+    <None Include="Connected Services\ServientregaRecogida\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="GenerarGuiasSaferbo.asmx" />
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\Service1.wsdl" />
+    <Content Include="Connected Services\ServientregaRecogida\WebServicesSaferbo.SOAP.ServientregaRecogida.ResponseCancel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServientregaRecogida\WebServicesSaferbo.SOAP.ServientregaRecogida.ResponseDetailPickUp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServientregaRecogida\WebServicesSaferbo.SOAP.ServientregaRecogida.ResponsePickUpRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServientregaRecogida\WebServicesSaferbo.SOAP.ServientregaRecogida.ResponseValidTimePickup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServientregaRecogida\WebServicesSaferbo.SOAP.ServientregaRecogida.ServiceDocumentPickUp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -186,12 +227,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServientregaRecogida\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="GenerarGuiasSaferbo.asmx.cs">
       <DependentUpon>GenerarGuiasSaferbo.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\Guia.cs" />
     <Compile Include="Models\RemitenteDestinario.cs" />
     <Compile Include="Models\Respuesta.cs" />
+    <Compile Include="Models\SolicitudRecogidaConfirmacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -257,6 +305,9 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServicesSaferbo_SOAP_WebServicesCoordinadora_JRpcServerSoapManagerService</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServientregaRecogida\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

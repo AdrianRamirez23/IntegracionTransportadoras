@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DomainApplication" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DomainApplication" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DomainApplication.Model" />
+  <xs:complexType name="ArrayOfPickUpRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PickUpRequest" nillable="true" type="tns:PickUpRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPickUpRequest" nillable="true" type="tns:ArrayOfPickUpRequest" />
+  <xs:complexType name="PickUpRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryTime" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DomainApplication.Model" minOccurs="0" name="DocumentList" nillable="true" type="q1:ArrayOfDocument" />
+      <xs:element minOccurs="0" name="PickupRequestNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReturnAdress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReturnCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalDocuments" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalPieces" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PickUpRequest" nillable="true" type="tns:PickUpRequest" />
+</xs:schema>

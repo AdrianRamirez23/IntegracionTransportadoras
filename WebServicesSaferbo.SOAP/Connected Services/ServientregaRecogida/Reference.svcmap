@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="77abb9d1-b728-4f48-ae60-f309a8fe297f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://190.131.194.159/PickUpRequest.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PickUpRequest.xsd" MetadataType="Schema" ID="ea5f4238-08de-4f77-a021-efd74396b337" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd0" />
+    <MetadataFile FileName="PickUpRequest1.xsd" MetadataType="Schema" ID="d1e4df65-e018-4e51-b4c4-38f1451d9a93" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd3" />
+    <MetadataFile FileName="PickUpRequest2.xsd" MetadataType="Schema" ID="795f9166-d0fb-499e-beb5-d762782857aa" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd2" />
+    <MetadataFile FileName="PickUpRequest.disco" MetadataType="Disco" ID="2ba2cfd7-e527-4338-8bf7-55e01e333606" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="f335432a-4bb8-4ebc-b138-642ae96c286d" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?wsdl" />
+    <MetadataFile FileName="PickUpRequest3.xsd" MetadataType="Schema" ID="2ded9c93-096a-460b-a586-87be41dae509" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd5" />
+    <MetadataFile FileName="PickUpRequest4.xsd" MetadataType="Schema" ID="fc56fd2f-8649-415a-8abd-f4f9491619db" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd4" />
+    <MetadataFile FileName="PickUpRequest5.xsd" MetadataType="Schema" ID="946ea646-9371-43c7-bfca-139aaf945e7c" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
