@@ -162,7 +162,7 @@ namespace WebServicesSaferbo.SOAP
                         proGuias.GenerarGuiaSticker(decimal.Parse(respuesta[0].ToString()), decimal.Parse(respuesta[respuesta.Length - 1].ToString()), objAuth.Id_CodFacturacion, sFormatoImpresionGuia, cargueExterno[0].objEnvios[0].Id_ArchivoCargar, false, ref bytereport);
                     }
 
-                    if (respuesta[0].Length > 9)
+                    if (respuesta[0].Length > 10)
                     {
                         res.guia = "0";
                         res.ULR_Rotulo = "";
