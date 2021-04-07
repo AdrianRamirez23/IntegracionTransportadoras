@@ -327,7 +327,7 @@ namespace WebServicesSaferbo.SOAP
 
             string[] guias = new string[Sol.listGuias.Count()];
 
-            for(int i = 0; i < Sol.listGuias.Count(), i++)
+            for(int i = 0; i < Sol.listGuias.Count(); i++)
             {
                 guias[i] = Sol.listGuias[i].GuiaID;
             }
