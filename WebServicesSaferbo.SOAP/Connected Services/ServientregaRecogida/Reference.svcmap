@@ -19,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://190.131.194.159/PickUpRequest.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://web.servientrega.com:8085/PickUpRequest.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PickUpRequest.xsd" MetadataType="Schema" ID="ea5f4238-08de-4f77-a021-efd74396b337" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd0" />
-    <MetadataFile FileName="PickUpRequest1.xsd" MetadataType="Schema" ID="d1e4df65-e018-4e51-b4c4-38f1451d9a93" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd3" />
-    <MetadataFile FileName="PickUpRequest2.xsd" MetadataType="Schema" ID="795f9166-d0fb-499e-beb5-d762782857aa" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd2" />
-    <MetadataFile FileName="PickUpRequest.disco" MetadataType="Disco" ID="2ba2cfd7-e527-4338-8bf7-55e01e333606" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?disco" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="f335432a-4bb8-4ebc-b138-642ae96c286d" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?wsdl" />
-    <MetadataFile FileName="PickUpRequest3.xsd" MetadataType="Schema" ID="2ded9c93-096a-460b-a586-87be41dae509" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd5" />
-    <MetadataFile FileName="PickUpRequest4.xsd" MetadataType="Schema" ID="fc56fd2f-8649-415a-8abd-f4f9491619db" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd4" />
-    <MetadataFile FileName="PickUpRequest5.xsd" MetadataType="Schema" ID="946ea646-9371-43c7-bfca-139aaf945e7c" SourceId="1" SourceUrl="http://190.131.194.159/PickUpRequest.svc?xsd=xsd1" />
+    <MetadataFile FileName="PickUpRequest6.xsd" MetadataType="Schema" ID="02e96ba3-7865-4176-8d67-4f13b00b3fa5" SourceId="1" SourceUrl="http://web.servientrega.com:8085/PickUpRequest.svc?xsd=xsd4" />
+    <MetadataFile FileName="PickUpRequest61.xsd" MetadataType="Schema" ID="c199c0d6-baa3-4ad8-a7ae-15c7b0eb2a88" SourceId="1" SourceUrl="http://web.servientrega.com:8085/PickUpRequest.svc?xsd=xsd3" />
+    <MetadataFile FileName="PickUpRequest62.xsd" MetadataType="Schema" ID="776ad270-52eb-4575-be83-06243e263c17" SourceId="1" SourceUrl="http://web.servientrega.com:8085/PickUpRequest.svc?xsd=xsd1" />
+    <MetadataFile FileName="PickUpRequest63.xsd" MetadataType="Schema" ID="db552f9f-3c48-4083-8e87-f5d8f2a515cc" SourceId="1" SourceUrl="http://web.servientrega.com:8085/PickUpRequest.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service11.wsdl" MetadataType="Wsdl" ID="08eb6627-4cfe-40c6-8335-72828a7850d3" SourceId="1" SourceUrl="http://web.servientrega.com:8085/PickUpRequest.svc?wsdl" />
+    <MetadataFile FileName="PickUpRequest64.xsd" MetadataType="Schema" ID="bdb0b3eb-31b0-48f5-a28f-cf6e580e0442" SourceId="1" SourceUrl="http://web.servientrega.com:8085/PickUpRequest.svc?xsd=xsd2" />
+    <MetadataFile FileName="PickUpRequest65.xsd" MetadataType="Schema" ID="1ae8c801-0101-4d07-aaae-9adfc3add3f1" SourceId="1" SourceUrl="http://web.servientrega.com:8085/PickUpRequest.svc?xsd=xsd5" />
+    <MetadataFile FileName="PickUpRequest1.disco" MetadataType="Disco" ID="7d8c913a-74dc-46ad-9223-775ca1c9d9b8" SourceId="1" SourceUrl="http://web.servientrega.com:8085/PickUpRequest.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

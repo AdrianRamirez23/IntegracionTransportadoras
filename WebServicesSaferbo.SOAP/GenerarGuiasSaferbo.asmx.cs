@@ -201,7 +201,7 @@ namespace WebServicesSaferbo.SOAP
                     objEnvio.id_cliente = Convert.ToInt32(ConfigurationManager.AppSettings["Id_Cliente"]);
                     objEnvio.fecha = fechaDiv[2] + "-" + fechaDiv[1] + "-" + fechaDiv[0];
                     objEnvio.id_remitente = 0;
-                    objEnvio.nit_remitente = remdes.nitr;
+                    objEnvio.nit_remitente = "";
                     objEnvio.nombre_remitente = remdes.nombrer;
                     objEnvio.direccion_remitente = remdes.dirr;
                     objEnvio.telefono_remitente = remdes.telr;
@@ -217,9 +217,9 @@ namespace WebServicesSaferbo.SOAP
                     objEnvio.codigo_producto = 0;
                     objEnvio.nivel_servicio = 1;
                     objEnvio.linea = "";
-                    objEnvio.contenido = remdes.obs_1;
-                    objEnvio.referencia = remdes.obs_2;
-                    objEnvio.observaciones = remdes.diceContener;
+                    objEnvio.contenido = remdes.diceContener;
+                    objEnvio.referencia = remdes.obs_1;
+                    objEnvio.observaciones = remdes.obs_2;
                     objEnvio.estado = "IMPRESO";
 
                     WebServicesCoordinadora.Agw_typeGuiaDetalle[] items = new Agw_typeGuiaDetalle[cantidadEnvio];
@@ -233,7 +233,7 @@ namespace WebServicesSaferbo.SOAP
                         item.largo = remdes.Unidades[i]._largo;
                         item.peso = Convert.ToSingle(remdes.Unidades[i]._pesovol);
                         item.unidades = 1;
-                        item.referencia = remdes.obs_1;
+                        item.referencia = remdes.obs_3;
                         item.nombre_empaque = ConfigurationManager.AppSettings["TipoEmpaqueCoordinadora"];
                         items[i] = item;
                     }

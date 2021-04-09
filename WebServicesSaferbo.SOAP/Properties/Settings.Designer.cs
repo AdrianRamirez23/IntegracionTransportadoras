@@ -26,7 +26,7 @@ namespace WebServicesSaferbo.SOAP.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://190.131.194.159:8059/GeneracionGuias.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://web.servientrega.com:8081/generacionguias.asmx")]
         public string WebServicesSaferbo_SOAP_WebServicesServientrega_GeneracionGuias {
             get {
                 return ((string)(this["WebServicesSaferbo_SOAP_WebServicesServientrega_GeneracionGuias"]));

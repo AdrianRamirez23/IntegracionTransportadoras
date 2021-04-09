@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DomainApplication" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DomainApplication" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://190.131.194.159/PickUpRequest.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DomainApplication.Model" />
+  <xs:import schemaLocation="http://web.servientrega.com:8085/PickUpRequest.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DomainApplication.Model" />
   <xs:complexType name="ArrayOfPickUpRequest">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PickUpRequest" nillable="true" type="tns:PickUpRequest" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="MwLZ/S0wx3VQWU5D76zRYCuYlUr0qq3Za7/k3uzoqUA=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="CRt2Vwn6YTPZSIN8e5AkCJmrF/Es+HV9V5JZPp4hr3o=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IPickUpRequest">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IPickUpRequest" contract="ServientregaRecogida.IPickUpRequest" bindingType="basicHttpBinding" address="http://190.131.194.159/PickUpRequest.svc" bindingConfiguration="BasicHttpBinding_IPickUpRequest">
+    <endpoint name="BasicHttpBinding_IPickUpRequest" contract="ServientregaRecogida.IPickUpRequest" bindingType="basicHttpBinding" address="http://web.servientrega.com:8085/PickUpRequest.svc" bindingConfiguration="BasicHttpBinding_IPickUpRequest">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://190.131.194.159/PickUpRequest.svc</serializedValue>
+          <serializedValue>http://web.servientrega.com:8085/PickUpRequest.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

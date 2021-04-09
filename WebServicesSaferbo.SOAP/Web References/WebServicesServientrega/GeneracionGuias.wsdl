@@ -982,7 +982,7 @@
       <wsdl:output message="tns:EncriptarContrasenaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CargueMasivoExterno">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Generación de Guías por Envio usado para generación de Envíos en SISCLINET.  Ver 20201207. ID=31e85ced</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Generación de Guías por Envio usado para generación de Envíos en SISCLINET.  Ver 20201207. ID=d304c5fe</wsdl:documentation>
       <wsdl:input message="tns:CargueMasivoExternoSoapIn" />
       <wsdl:output message="tns:CargueMasivoExternoSoapOut" />
     </wsdl:operation>
@@ -1576,10 +1576,10 @@
   </wsdl:binding>
   <wsdl:service name="GeneracionGuias">
     <wsdl:port name="GeneracionGuiasSoap" binding="tns:GeneracionGuiasSoap">
-      <soap:address location="http://190.131.194.159:8059/GeneracionGuias.asmx" />
+      <soap:address location="http://web.servientrega.com:8081/generacionguias.asmx" />
     </wsdl:port>
     <wsdl:port name="GeneracionGuiasSoap12" binding="tns:GeneracionGuiasSoap12">
-      <soap12:address location="http://190.131.194.159:8059/GeneracionGuias.asmx" />
+      <soap12:address location="http://web.servientrega.com:8081/generacionguias.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

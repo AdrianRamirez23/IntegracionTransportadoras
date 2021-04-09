@@ -79,33 +79,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServientregaRecogida\PickUpRequest.disco" />
     <None Include="Connected Services\ServientregaRecogida\configuration91.svcinfo" />
     <None Include="Connected Services\ServientregaRecogida\configuration.svcinfo" />
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest61.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest62.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest63.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest64.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest65.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServientregaRecogida\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\ServientregaRecogida\PickUpRequest1.disco" />
     <Content Include="GenerarGuiasSaferbo.asmx" />
-    <None Include="Connected Services\ServientregaRecogida\PickUpRequest.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServientregaRecogida\PickUpRequest1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServientregaRecogida\PickUpRequest2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServientregaRecogida\PickUpRequest3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServientregaRecogida\PickUpRequest4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServientregaRecogida\PickUpRequest5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServientregaRecogida\Service1.wsdl" />
+    <Content Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
     <Content Include="Connected Services\ServientregaRecogida\WebServicesSaferbo.SOAP.ServientregaRecogida.ResponseCancel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -121,6 +121,7 @@
     <Content Include="Connected Services\ServientregaRecogida\WebServicesSaferbo.SOAP.ServientregaRecogida.ServiceDocumentPickUp.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\ServientregaRecogida\Service11.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -262,10 +263,10 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Web References\WebServicesServientrega\GeneracionGuias.wsdl" />
-    <Content Include="Web References\WebServicesServientrega\Reference.map">
+    <None Include="Web References\WebServicesServientrega\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web References\WebServicesServientrega\ResultadoAnulacionGuias.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -283,10 +284,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://190.131.194.159:8059/GeneracionGuias.asmx">
+    <WebReferenceUrl Include="http://web.servientrega.com:8081/generacionguias.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebServicesServientrega\</RelPath>
-      <UpdateFromURL>http://190.131.194.159:8059/GeneracionGuias.asmx</UpdateFromURL>
+      <UpdateFromURL>http://web.servientrega.com:8081/generacionguias.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
