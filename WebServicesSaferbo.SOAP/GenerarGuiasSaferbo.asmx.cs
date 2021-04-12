@@ -38,7 +38,7 @@ namespace WebServicesSaferbo.SOAP
 
                     int kilos = 0;
 
-                    foreach (Unidades unidad in remdes.Unidades)
+                    foreach (Unidades unidad in remdes.unidades)
                     {
                         kilos = kilos + unidad._pesovol;
                     }
@@ -118,10 +118,10 @@ namespace WebServicesSaferbo.SOAP
 
 
                     arrEnvios.Nom_UnidadEmpaque = ConfigurationManager.AppSettings["TipoEmpaqueServientrega"];
-                    arrEnvios.Num_Alto = remdes.Unidades[0]._alto;
-                    arrEnvios.Num_Ancho = remdes.Unidades[0]._ancho;
-                    arrEnvios.Num_Largo = remdes.Unidades[0]._largo;
-                    arrEnvios.Num_PesoTotal = remdes.Unidades[0]._pesovol;
+                    arrEnvios.Num_Alto = remdes.unidades[0]._alto;
+                    arrEnvios.Num_Ancho = remdes.unidades[0]._ancho;
+                    arrEnvios.Num_Largo = remdes.unidades[0]._largo;
+                    arrEnvios.Num_PesoTotal = remdes.unidades[0]._pesovol;
                     arrEnvios.Num_Factura = remdes.obs_1;
                     arrEnvios.Gen_Sobreporte = false;
                     arrEnvios.Gen_Cajaporte = false;
@@ -142,10 +142,10 @@ namespace WebServicesSaferbo.SOAP
                         var obj = new WebServicesServientrega.EnviosUnidadEmpaqueCargue();
                         cargueExterno[0].objEnvios[0].objEnviosUnidadEmpaqueCargue[pi] = new WebServicesServientrega.EnviosUnidadEmpaqueCargue();
                         obj.Des_IdArchivoOrigen = arrEnvios.Des_IdArchivoOrigen;
-                        obj.Num_Alto = remdes.Unidades[pi]._alto;
-                        obj.Num_Peso = remdes.Unidades[pi]._pesovol;
-                        obj.Num_Largo = remdes.Unidades[pi]._largo;
-                        obj.Num_Ancho = remdes.Unidades[pi]._ancho;
+                        obj.Num_Alto = remdes.unidades[pi]._alto;
+                        obj.Num_Peso = remdes.unidades[pi]._pesovol;
+                        obj.Num_Largo = remdes.unidades[pi]._largo;
+                        obj.Num_Ancho = remdes.unidades[pi]._ancho;
                         obj.Des_DiceContener = remdes.diceContener;//"CONTENIDO DE LA UNIDAD DE EMPAQUE";
                         obj.Num_Cantidad = 1;//Cantidad de piezas de la Unidad de Empaque
                         obj.Num_ValorDeclarado = remdes.valordec.ToString();
@@ -196,10 +196,9 @@ namespace WebServicesSaferbo.SOAP
                     new Utilidades().modificarWebConfigRemision(codRenmison);
 
                     objEnvio.codigo_remision = codRenmison.ToString();
-                    string fechahoy = DateTime.Now.ToString("d");
-                    string[] fechaDiv = fechahoy.Split('/');
+                   
                     objEnvio.id_cliente = Convert.ToInt32(ConfigurationManager.AppSettings["Id_Cliente"]);
-                    objEnvio.fecha = fechaDiv[2] + "-" + fechaDiv[1] + "-" + fechaDiv[0];
+                    objEnvio.fecha = "";
                     objEnvio.id_remitente = 0;
                     objEnvio.nit_remitente = "";
                     objEnvio.nombre_remitente = remdes.nombrer;
@@ -228,10 +227,10 @@ namespace WebServicesSaferbo.SOAP
                     for(int i = 0; i < cantidadEnvio; i++)
                     {
                         item.ubl = 0;
-                        item.alto = remdes.Unidades[i]._alto;
-                        item.ancho = remdes.Unidades[i]._ancho;
-                        item.largo = remdes.Unidades[i]._largo;
-                        item.peso = Convert.ToSingle(remdes.Unidades[i]._pesovol);
+                        item.alto = remdes.unidades[i]._alto;
+                        item.ancho = remdes.unidades[i]._ancho;
+                        item.largo = remdes.unidades[i]._largo;
+                        item.peso = Convert.ToSingle(remdes.unidades[i]._pesovol);
                         item.unidades = 1;
                         item.referencia = remdes.obs_3;
                         item.nombre_empaque = ConfigurationManager.AppSettings["TipoEmpaqueCoordinadora"];
